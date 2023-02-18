@@ -22,8 +22,8 @@ class ListaJuegos:
             NuevoNodo.AsignarSiguiente = self.Inicio # ingresa en la izquierda. Apunta a inicio lista
             self.Inicio = NuevoNodo # Retrocede apuntador para que inicie en el nuevo nodo
     
-    def insertar(self, Codigo, Nombre):
-        NuevoNodo = NodoJuegos(Codigo,Nombre)
+    def insertar(self, Codigo, Nombre, Plataforma):
+        NuevoNodo = NodoJuegos(Codigo,Nombre,Plataforma)
         self.Limite += 1
         if self.Inicio == None:
             self.Inicio = NuevoNodo
@@ -61,6 +61,24 @@ class ListaJuegos:
         while Auxiliar != None:
             if Contador == posicion:
                 return Auxiliar.ObtenerNumero()
+            Auxiliar = Auxiliar.Siguiente
+            Contador += 1
+    
+    def BuscarCodigoPlatformaIndice(self, posicion):
+        if self.Inicio == None:
+            return None
+        if posicion >= self.Limite:
+            #Posicion es mayor al numero de nodos
+            return None
+        Auxiliar = self.Inicio  ##Posible no se usen
+        Previo = None
+        if posicion == 0:
+            #si la posicion es la inicial
+            return Auxiliar.ObtenerPlataforma()
+        Contador = 0
+        while Auxiliar != None:
+            if Contador == posicion:
+                return Auxiliar.ObtenerPlataforma()
             Auxiliar = Auxiliar.Siguiente
             Contador += 1
 
