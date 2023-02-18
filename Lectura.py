@@ -3,18 +3,17 @@ from xml.dom import minidom
 from acceso import *
 from Plataformas import ListaPlataforma
 
-## LEEER Y EXTRACCION DE DATOS DEL XML
+
 try:
-    # print("Infrese la direccion del documento: ")
-    # entrada = input()
+    ## LEEER Y EXTRACCION DE DATOS DEL XML
     doc = minidom.parse("/home/jhonatan/Documentos/Universidad_USAC/Semestre5/02_IPC2/Practica1/salida.xml")
 
     print("Ya paso")
 
+    mi_plataforma = ListaPlataforma()  # Lista de Nodos
 
-    mi_plataforma = ListaPlataforma() 
     print("-----------Acceso específico-----------")
-    JuegosViejos = doc.getElementsByTagName("JuegosViejos")
+    JuegosViejos = doc.getElementsByTagName("JuegosViejos")  #accediendo al xml desde la raiz
     print("Tamaño JuegosViejos: ", len(JuegosViejos))
     for JuegoViejo in JuegosViejos:
         ListaPlataformas = JuegoViejo.getElementsByTagName("ListaPlataformas")
@@ -32,6 +31,7 @@ try:
                 # print(f"nombre = {nombre.firstChild.data}")
                 mi_plataforma.insertar(codigo.firstChild.data, nombre.firstChild.data)
 
+    ## No se que esta pasando 
 
     elem = mi_plataforma.Ordenar2()
     print(mi_plataforma.Impimir())
