@@ -1,16 +1,25 @@
-class Nodo:
-    def __init__(self,datoInicial):
-        self.dato = datoInicial
-        self.siguiente = None
+class Juego:
+    def __init__(self, Codigo, Cadena):
+        self.Codigo = Codigo
+        self.Cadena = Cadena
+
+
+class NodoJuegos:
+    def __init__(self, Codigo, Cadena):
+        self.Dato = Juego(Codigo, Cadena)
+        self.Siguiente = None
+
+    def ObtenerSiguiente(self):
+        return self.Siguiente
+
+    def AsignarSiguiente(self, Nodo):
+        self.Siguiente = Nodo
     
-    def obtenerDato(self):
-        return self.dato
+    def ObtenerCadena(self):
+        return self.Dato.Cadena
+
+    def ObtenerNumero(self):
+        return self.Dato.Codigo
     
-    def obtenerSiguiente(self):
-        return self.siguiente
-    
-    def asignarDato(self, nuevodato):
-        self.dato = nuevodato
-    
-    def asignarSiguiente(self,nuevosiguiente):
-        self.siguiente = nuevosiguiente
+    def Imprimir(self):
+        return str(self.Dato.Codigo) + "-" + str(self.Dato.Cadena)

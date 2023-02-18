@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<JuegosViejos>
+ <ListaPlataformas>
+  <Plataforma>
+   <codigo>013</codigo>
+   <nombre>Play Station</nombre>
+  </Plataforma>
+  <Plataforma>
+   <codigo>020</codigo>
+   <nombre>Nintendo</nombre>
+  </Plataforma>
+  <Plataforma>
+   <codigo>035</codigo>
+   <nombre>Sega</nombre>
+  </Plataforma>
+  <Plataforma>
+   <codigo>040</codigo>
+   <nombre>Xbox</nombre>
+  </Plataforma>
+ </ListaPlataformas>
+</JuegosViejos>
