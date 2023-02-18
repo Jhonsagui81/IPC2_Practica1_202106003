@@ -1,4 +1,4 @@
-import Nodo
+import NodoJuegos
 class ListaJuegos:
     def __init__(self):
         self.cabeza = None
@@ -7,7 +7,7 @@ class ListaJuegos:
         return self.cabeza == None
     
     def agregar(self, item):
-        temp = Nodo(item)
+        # temp = NodoJuegos(item)
         temp.asignarSiguiente(self.cabeza)
         self.cabeza = temp
     

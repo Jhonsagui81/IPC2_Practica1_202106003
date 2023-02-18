@@ -2,11 +2,11 @@
 <JuegosViejos>
   <ListaPlataformas>
     <Plataforma>
-      <codigo>013</codigo>
+      <codigo>123</codigo>
       <nombre>Play Station</nombre>
     </Plataforma>
     <Plataforma>
-      <codigo>020</codigo>
+      <codigo>033</codigo>
       <nombre>Nintendo</nombre>
     </Plataforma>
     <Plataforma>
