@@ -4,23 +4,7 @@ class ListaPlataforma:
     def __init__(self):
         self.Inicio = None
         self.Final = None
-        self.Limite = 0
-    
-    def estaVacia(self):
-        return self.cabeza == None    
-    
-    def get_indice(self):
-        return self.Limite
-
-    def push(self, item):
-        NuevoNodo = NodoPlataformas(item)
-        self.Limite += 1
-        if self.Inicio == None:
-            self.Inicio = NuevoNodo
-            self.Final = NuevoNodo
-        else:
-            NuevoNodo.AsignarSiguiente = self.Inicio # ingresa en la izquierda. Apunta a inicio lista
-            self.Inicio = NuevoNodo # Retrocede apuntador para que inicie en el nuevo nodo
+        self.Limite = 0 
     
     def insertar(self, Codigo, Nombre):
         NuevoNodo= NodoPlataformas(Codigo,Nombre)
@@ -31,20 +15,6 @@ class ListaPlataforma:
         else:
             self.Final.AsignarSiguiente(NuevoNodo)
             self.Final = NuevoNodo
-
-    def Buscar(self, Dato):
-        if self.Inicio == None:
-            return None
-        Auxiliar = self.Inicio
-        while Auxiliar != None:
-            if Auxiliar.ObtenerDato() == Dato:
-                #Encontró el dato
-                return Auxiliar
-            else:
-                #Pasamos al siguiente nodo
-                Auxiliar = Auxiliar.Siguiente
-        #No encontró el dato
-        return None
     
     def BuscarCodigoIndice(self, posicion):
         if self.Inicio == None:
@@ -56,11 +26,11 @@ class ListaPlataforma:
         Previo = None
         if posicion == 0:
             #si la posicion es la inicial
-            return Auxiliar.ObtenerNumero()
+            return Auxiliar.ObtenerCodigo()
         Contador = 0
         while Auxiliar != None:
             if Contador == posicion:
-                return Auxiliar.ObtenerNumero()
+                return Auxiliar.ObtenerCodigo()
             Auxiliar = Auxiliar.Siguiente
             Contador += 1
 
@@ -81,7 +51,7 @@ class ListaPlataforma:
             Auxiliar = Auxiliar.Siguiente
             Contador += 1        
 
-    def Ordenar2(self):
+    def OrdenarElementos(self):
         Bandera = True
         numero = 1
         while Bandera:
@@ -92,7 +62,7 @@ class ListaPlataforma:
             numero += 1
             while Actual != None:
                 if Actual.Siguiente != None:
-                    if Actual.ObtenerNumero() > Actual.Siguiente.ObtenerNumero():
+                    if Actual.ObtenerCodigo() > Actual.Siguiente.ObtenerCodigo():
                         #Si entramos acá, quiere decir que el siguiente nodo es menor al actual
                         Bandera = True
                         if Actual == self.Inicio:
@@ -107,17 +77,4 @@ class ListaPlataforma:
                             Anterior.Siguiente.Siguiente = Actual
                 Anterior = Actual
                 Actual = Actual.Siguiente
-        return self.Limite
-        
-    def Impimir(self):
-        Retorno = "La lista tiene: ["
-        if self.Inicio == None:
-            return "La lista está vacía."
-        Auxiliar = self.Inicio
-        while Auxiliar != None:
-            Retorno += str(Auxiliar.Imprimir())
-            if Auxiliar.Siguiente != None:
-                Retorno += ", "
-            Auxiliar = Auxiliar.Siguiente
-        Retorno += "]"
-        return Retorno
+        return numero

@@ -6,22 +6,6 @@ class ListaJuegos:
         self.Final = None
         self.Limite = 0
     
-    def estaVacia(self):
-        return self.cabeza == None    
-    
-    def get_indice(self):
-        return self.Limite
-
-    def push(self, item):
-        NuevoNodo = NodoJuegos(item)
-        self.Limite += 1
-        if self.Inicio == None:
-            self.Inicio = NuevoNodo
-            self.Final = NuevoNodo
-        else:
-            NuevoNodo.AsignarSiguiente = self.Inicio # ingresa en la izquierda. Apunta a inicio lista
-            self.Inicio = NuevoNodo # Retrocede apuntador para que inicie en el nuevo nodo
-    
     def insertar(self, Codigo, Nombre, Plataforma):
         NuevoNodo = NodoJuegos(Codigo,Nombre,Plataforma)
         self.Limite += 1
@@ -32,35 +16,20 @@ class ListaJuegos:
             self.Final.AsignarSiguiente(NuevoNodo)
             self.Final = NuevoNodo
 
-    def Buscar(self, Dato):
-        if self.Inicio == None:
-            return None
-        Auxiliar = self.Inicio
-        while Auxiliar != None:
-            if Auxiliar.ObtenerDato() == Dato:
-                #Encontró el dato
-                return Auxiliar
-            else:
-                #Pasamos al siguiente nodo
-                Auxiliar = Auxiliar.Siguiente
-        #No encontró el dato
-        return None
-    
     def BuscarCodigoIndice(self, posicion):
         if self.Inicio == None:
             return None
         if posicion >= self.Limite:
             #Posicion es mayor al numero de nodos
             return None
-        Auxiliar = self.Inicio  ##Posible no se usen
-        Previo = None
+        Auxiliar = self.Inicio 
         if posicion == 0:
             #si la posicion es la inicial
-            return Auxiliar.ObtenerNumero()
+            return Auxiliar.ObtenerCodigo()
         Contador = 0
         while Auxiliar != None:
             if Contador == posicion:
-                return Auxiliar.ObtenerNumero()
+                return Auxiliar.ObtenerCodigo()
             Auxiliar = Auxiliar.Siguiente
             Contador += 1
     
@@ -99,7 +68,7 @@ class ListaJuegos:
             Auxiliar = Auxiliar.Siguiente
             Contador += 1        
 
-    def Ordenar2(self):
+    def OrdenarElementos(self):
         Bandera = True
         numero = 1
         while Bandera:
@@ -110,7 +79,7 @@ class ListaJuegos:
             numero += 1
             while Actual != None:
                 if Actual.Siguiente != None:
-                    if Actual.ObtenerNumero() > Actual.Siguiente.ObtenerNumero():
+                    if Actual.ObtenerCodigo() > Actual.Siguiente.ObtenerCodigo():
                         #Si entramos acá, quiere decir que el siguiente nodo es menor al actual
                         Bandera = True
                         if Actual == self.Inicio:
@@ -125,7 +94,7 @@ class ListaJuegos:
                             Anterior.Siguiente.Siguiente = Actual
                 Anterior = Actual
                 Actual = Actual.Siguiente
-        return self.Limite
+        return numero
         
     def Impimir(self):
         Retorno = "La lista tiene: ["

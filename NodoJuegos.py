@@ -19,7 +19,7 @@ class NodoJuegos:
     def ObtenerCadena(self):
         return self.Dato.Cadena
 
-    def ObtenerNumero(self):
+    def ObtenerCodigo(self):
         return self.Dato.Codigo
     
     def ObtenerPlataforma(self):
